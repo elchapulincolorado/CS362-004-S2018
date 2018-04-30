@@ -6,15 +6,15 @@
 #include "rngs.h"
 
 int main() {
-  struct gameState* state;
+  struct gameState state;
+  state = *newGame();
 
-  state = newGame();
-  
-  if (sizeof(&state) == 8) {
-    printf("newGame() test passed.  Size was supposed to be 8 and it was!\n");
+  size_t stateSize = sizeof(state);
+  if (stateSize == 26300) {
+    printf("newGame() test passed.  Size was supposed to be 26300 and it was!\n");
   } else {
-    printf("newGame() test failed.  Size was supposed to be 8 but it was %lu\n", sizeof(&state));
+    printf("newGame() test failed.  Size was supposed to be 26300 but it was %lu\n", stateSize);
   }
-  //assertTrue("gameState not 23", sizeof(&state), 23);
+
   return 0;
 }
