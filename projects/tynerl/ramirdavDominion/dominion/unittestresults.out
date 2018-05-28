@@ -1,0 +1,83 @@
+unittest1.c:
+newGame() test passed.  Size was supposed to be 26300 and it was!
+File 'dominion.c'
+Lines executed:0.31% of 646
+Branches executed:0.00% of 419
+Taken at least once:0.00% of 419
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+unittest2.c:
+updateCoins() initial hand test passed.  Number of coins was supposed to be 3 and it was!
+updateCoins() all denominations test passed.  Number of coins was supposed to be 6 and it was!
+updateCoins() bonus specified test passed.  Number of coins was supposed to be 11 and it was!
+File 'dominion.c'
+Lines executed:17.49% of 646
+Branches executed:15.75% of 419
+Taken at least once:13.13% of 419
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+unittest3.c:
+isGameOver() just initialized test passed.  Game should not be over and it wasn't!
+isGameOver() no provinces test passed.  Game should have been over and it was!
+isGameOver() three empty piles test passed.  Game should have been over and it was!
+File 'dominion.c'
+Lines executed:19.35% of 646
+Branches executed:17.66% of 419
+Taken at least once:15.04% of 419
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+unittest4.c:
+compare() greater than test passed.  3 should have been greater than 2 and it was!
+compare() less than test passed.  2 should have been less than 3 and it was!
+compare() equals test passed.  3 should have equaled 3 and it did!
+File 'dominion.c'
+Lines executed:19.50% of 646
+Branches executed:17.66% of 419
+Taken at least once:15.27% of 419
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest1.c:
+smithy pass: smithy card completed.
+smithy fail: Smithy card remained in hand after being played.  13
+smithy fail: smithy was played, but handsize was not increased by 2 (add 3, discard smithy) but by: -1
+File 'dominion.c'
+Lines executed:26.63% of 646
+Branches executed:27.92% of 419
+Taken at least once:18.62% of 419
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest2.c:
+adventurer pass: adventurer card completed.
+File 'dominion.c'
+Lines executed:31.89% of 646
+Branches executed:32.70% of 419
+Taken at least once:22.91% of 419
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest3.c:
+steward pass: steward card completed.
+File 'dominion.c'
+Lines executed:32.82% of 646
+Branches executed:33.65% of 419
+Taken at least once:23.87% of 419
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
+cardtest4.c:
+minion pass: minion card completed.
+minion fail: minion option 1 error wrong coins
+minion fail: minion option 2 error amount of coins shouldn't have changed but they did.
+minion fail: minion option 2 error. Hand count should be 4, but it is: -6.
+File 'dominion.c'
+Lines executed:34.67% of 646
+Branches executed:34.61% of 419
+Taken at least once:25.30% of 419
+No calls
+dominion.c:creating 'dominion.c.gcov'
+
