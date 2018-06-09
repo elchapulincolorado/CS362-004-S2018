@@ -38,15 +38,15 @@ public class UrlValidatorTest extends TestCase {
    //You need to create more test cases for your Partitions if you need to 
    
    public void testIsValid() {
-      List<String> validStrings = new ArrayList<>(); // {"google.com", "www.google.com", "http://www.google.com"}
-      validStrings.add("google.com");
-      validStrings.add("www.google.com");
+      List<String> validStrings = new ArrayList<>();
       validStrings.add("http://www.google.com");
+      validStrings.add("https://www.google.com");
 
       List<String> invalidStrings = new ArrayList<>();
       invalidStrings.add("");
       invalidStrings.add("google");
       invalidStrings.add(".com");
+      invalidStrings.add("www.google.com");
 
       List<String> failures = new ArrayList<>();
 
@@ -54,14 +54,18 @@ public class UrlValidatorTest extends TestCase {
 
       // test valid strings
       for (String validString : validStrings) {
-         if(!validator.isValid(validString)) {
+         boolean isValidResult = validator.isValid(validString);
+         if(!isValidResult) {
+            // is expected to be valid
             failures.add(validString);
          }
       }
 
       // test invalid strings
       for (String invalidString : invalidStrings) {
-         if (validator.isValid(invalidString)) {
+         boolean isValidResult = validator.isValid(invalidString);
+         if (isValidResult) {
+            // not expected to be valid
             failures.add(invalidString);
          }
       }
@@ -75,9 +79,9 @@ public class UrlValidatorTest extends TestCase {
             System.out.println("Was supposed to fail UrlValidator.isValid() but it passed: " + failure);
          }
       }
+
+      // fails the test if any failures are present
+      assertTrue(failures.isEmpty());
       // done
    }
-   
-
-
 }
