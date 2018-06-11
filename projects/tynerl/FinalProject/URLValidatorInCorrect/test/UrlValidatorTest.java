@@ -34,13 +34,24 @@ public class UrlValidatorTest extends TestCase {
    
    public void testYourFirstPartition()
    {
-	 //You can use this function to implement your First Partition testing
+      // testNoFragments()
+      System.out.println("No Fragments testing...");
+      UrlValidator urlVal = new UrlValidator(UrlValidator.NO_FRAGMENTS);
 
+      assertTrue(urlVal.isValid("http://go.com/test1")); //valid, no fragments
+      assertFalse(urlVal.isValid("http://go.com/test1#Frag")); //invalid, fragment
    }
    
    public void testYourSecondPartition(){
-		 //You can use this function to implement your Second Partition testing	   
+      // testAllow2Slashes()
+      System.out.println("Allow 2 Slashes testing...");
+      UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_2_SLASHES);
 
+      assertFalse(urlVal.isValid("http://go.comtest1")); //no slash present, should not be allowed
+      assertTrue(urlVal.isValid("http://go.com/test1")); //one slash present, always allowed
+      assertTrue(urlVal.isValid("http://go.com//test1")); //double slash present, allowed
+      //assertFalse(urlVal.isValid("http://go.com///////test1")); //many slashes present, should not be allowed
+      //many slashes should be asserted as False, but error occurs and allows for more than 2 slashes
    }
    //You need to create more test cases for your Partitions if you need to 
    
