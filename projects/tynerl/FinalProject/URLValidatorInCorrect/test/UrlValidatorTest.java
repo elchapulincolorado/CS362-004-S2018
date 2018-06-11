@@ -20,14 +20,21 @@ public class UrlValidatorTest extends TestCase {
    
    public void testManualTest()
    {
-//You can use this function to implement your manual testing	   
-	   
+      //changed: see bug 1
+      //String[] schemes = {"http","https"};
+
+      UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
+      if (validator.isValid("https://www.google.com")) {
+         System.out.println("url is valid");
+      } else {
+         System.out.println("url is invalid");
+      }
    }
    
    
    public void testYourFirstPartition()
    {
-	 //You can use this function to implement your First Partition testing	   
+	 //You can use this function to implement your First Partition testing
 
    }
    
