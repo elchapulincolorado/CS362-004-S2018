@@ -17,7 +17,7 @@ public class UrlValidatorTest extends TestCase {
    }
 
    
-   
+   // Written by David
    public void testManualTest()
    {
       //changed: see bug 1
@@ -31,21 +31,22 @@ public class UrlValidatorTest extends TestCase {
       }
    }
    
-   
+   // Written by Nicolas
    public void testYourFirstPartition()
    {
       // testNoFragments()
       System.out.println("No Fragments testing...");
-      UrlValidator urlVal = new UrlValidator(UrlValidator.NO_FRAGMENTS);
+      UrlValidator urlVal = new UrlValidator(UrlValidator.NO_FRAGMENTS + UrlValidator.ALLOW_ALL_SCHEMES);
 
       assertTrue(urlVal.isValid("http://go.com/test1")); //valid, no fragments
       assertFalse(urlVal.isValid("http://go.com/test1#Frag")); //invalid, fragment
    }
-   
+
+   // Written by Nicolas
    public void testYourSecondPartition(){
       // testAllow2Slashes()
       System.out.println("Allow 2 Slashes testing...");
-      UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_2_SLASHES);
+      UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES);
 
       assertFalse(urlVal.isValid("http://go.comtest1")); //no slash present, should not be allowed
       assertTrue(urlVal.isValid("http://go.com/test1")); //one slash present, always allowed
@@ -53,8 +54,8 @@ public class UrlValidatorTest extends TestCase {
       //assertFalse(urlVal.isValid("http://go.com///////test1")); //many slashes present, should not be allowed
       //many slashes should be asserted as False, but error occurs and allows for more than 2 slashes
    }
-   //You need to create more test cases for your Partitions if you need to 
-   
+
+   // Written by Lowell
    public void testIsValid() {
       List<String> validStrings = new ArrayList<>();
       validStrings.add("http://www.google.com");
