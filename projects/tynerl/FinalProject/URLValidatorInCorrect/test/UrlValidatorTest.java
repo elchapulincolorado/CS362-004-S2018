@@ -61,7 +61,7 @@ public class UrlValidatorTest extends TestCase {
    {
       //Scheme testing
       System.out.println("Scheme Partition testing...");
-      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS + UrlValidator.ALLOW_ALL_SCHEMES);
+      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 
       assertTrue(urlVal.isValid("http://www.google.com#FRAG")); //random testing of fragment allowance
       assertTrue(urlVal.isValid("ftp://google.com"));
@@ -81,7 +81,7 @@ public class UrlValidatorTest extends TestCase {
       //Authority testing
       System.out.println("Authority Partition testing...");
 
-      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS + UrlValidator.ALLOW_ALL_SCHEMES);
+      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
       assertTrue(urlVal.isValid("http://go.com"));
       assertTrue(urlVal.isValid("http://go.au"));
       assertTrue(urlVal.isValid("http://255.255.255.255"));
