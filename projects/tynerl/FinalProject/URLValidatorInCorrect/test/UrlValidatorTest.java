@@ -46,7 +46,7 @@ public class UrlValidatorTest extends TestCase {
    public void testAllow2Slashes()
    {
       System.out.println("Allow 2 Slashes testing...");
-      UrlValidator urlVal = new UrlValidator(UrlValidator.NO_FRAGMENTS + UrlValidator.ALLOW_ALL_SCHEMES);
+      UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES);
 
       assertFalse(urlVal.isValid("http://go.comtest1")); //no slash present, should not be allowed
       assertTrue(urlVal.isValid("http://go.com/test1")); //one slash present, always allowed
