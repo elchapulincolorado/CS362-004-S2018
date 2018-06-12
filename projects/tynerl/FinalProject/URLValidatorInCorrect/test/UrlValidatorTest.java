@@ -32,27 +32,101 @@ public class UrlValidatorTest extends TestCase {
    }
    
    // Written by Nicolas
-   public void testYourFirstPartition()
+   public void testNoFragments()
    {
-      // testNoFragments()
       System.out.println("No Fragments testing...");
       UrlValidator urlVal = new UrlValidator(UrlValidator.NO_FRAGMENTS + UrlValidator.ALLOW_ALL_SCHEMES);
 
       assertTrue(urlVal.isValid("http://go.com/test1")); //valid, no fragments
       assertFalse(urlVal.isValid("http://go.com/test1#Frag")); //invalid, fragment
+
    }
 
    // Written by Nicolas
-   public void testYourSecondPartition(){
-      // testAllow2Slashes()
+   public void testAllow2Slashes()
+   {
       System.out.println("Allow 2 Slashes testing...");
-      UrlValidator urlVal = new UrlValidator(UrlValidator.ALLOW_2_SLASHES + UrlValidator.ALLOW_ALL_SCHEMES);
+      UrlValidator urlVal = new UrlValidator(UrlValidator.NO_FRAGMENTS + UrlValidator.ALLOW_ALL_SCHEMES);
 
       assertFalse(urlVal.isValid("http://go.comtest1")); //no slash present, should not be allowed
       assertTrue(urlVal.isValid("http://go.com/test1")); //one slash present, always allowed
       assertTrue(urlVal.isValid("http://go.com//test1")); //double slash present, allowed
       //assertFalse(urlVal.isValid("http://go.com///////test1")); //many slashes present, should not be allowed
       //many slashes should be asserted as False, but error occurs and allows for more than 2 slashes
+
+   }
+
+   // Written by Nicolas
+   public void testSchemePartition()
+   {
+      //Scheme testing
+      System.out.println("Scheme Partition testing...");
+      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS + UrlValidator.ALLOW_ALL_SCHEMES);
+
+      assertTrue(urlVal.isValid("http://www.google.com#FRAG")); //random testing of fragment allowance
+      assertTrue(urlVal.isValid("ftp://google.com"));
+      assertTrue(urlVal.isValid("h3t://google.com"));
+      assertFalse(urlVal.isValid("http:google.com"));
+      assertFalse(urlVal.isValid("://google.com"));
+      assertFalse(urlVal.isValid("google.com"));
+
+      System.out.println("Finished Scheme testing...");
+
+
+   }
+
+   // Written by Nicolas
+   public void testAuthorityPartition()
+   {
+      //Authority testing
+      System.out.println("Authority Partition testing...");
+
+      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.NO_FRAGMENTS + UrlValidator.ALLOW_ALL_SCHEMES);
+      assertTrue(urlVal.isValid("http://go.com"));
+      assertTrue(urlVal.isValid("http://go.au"));
+      assertTrue(urlVal.isValid("http://255.255.255.255"));
+      assertFalse(urlVal.isValid("http://1.2.3.4.5"));
+      assertFalse(urlVal.isValid("http://aaa."));
+      assertFalse(urlVal.isValid("http://go.1aa"));
+
+      System.out.println("Finished Authority testing...");
+
+   }
+
+   // Written by Nicolas
+   public void testPortPartition()
+   {
+      //Port testing
+      System.out.println("Port Partition testing...");
+
+      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+      assertTrue(urlVal.isValid("http://go.com:80"));
+      assertTrue(urlVal.isValid("http://go.com:0"));
+      assertTrue(urlVal.isValid("http://go.com:65535"));
+      assertFalse(urlVal.isValid("http://go.com:-1"));
+      assertFalse(urlVal.isValid("http://go.com:65636"));
+      assertFalse(urlVal.isValid("http://go.com:65a"));
+
+      System.out.println("Finished Port testing...");
+
+   }
+
+   // Written by Nicolas
+   public void testPathPartition()
+   {
+      //Path testing
+      System.out.println("Path Partition testing...");
+
+      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+      assertTrue(urlVal.isValid("http://go.com/test1"));
+      assertTrue(urlVal.isValid("http://go.com/t123"));
+      assertTrue(urlVal.isValid("http://go.com/test1/file"));
+      assertFalse(urlVal.isValid("http://go.com/test1//file"));
+      assertFalse(urlVal.isValid("http://go.com/.."));
+      assertFalse(urlVal.isValid("http://go.com/..//file"));
+
+      System.out.println("Finished Path testing...");
+
    }
 
    // Written by Lowell
